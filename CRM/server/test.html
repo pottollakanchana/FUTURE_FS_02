@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRM Test</title>
+</head>
+<body>
+
+  <h2>CRM API Test</h2>
+
+  <button onclick="getLeads()">GET LEADS</button>
+  <button onclick="createLead()">CREATE LEAD</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    const API = "http://localhost:5000/api/leads";
+
+    // SHOW OUTPUT FUNCTION
+    function show(data) {
+      document.getElementById("output").innerText =
+        JSON.stringify(data, null, 2);
+    }
+
+    // GET LEADS
+    async function getLeads() {
+      try {
+        const res = await fetch(API);
+        const data = await res.json();
+        show(data);
+      } catch (err) {
+        show("ERROR: " + err.message);
+      }
+    }
+
+    // CREATE LEAD
+    async function createLead() {
+      try {
+        const res = await fetch(API, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: "John",
+            email: "john@gmail.com",
+            source: "website"
+          })
+        });
+
+        const data = await res.json();
+        show(data);
+      } catch (err) {
+        show("ERROR: " + err.message);
+      }
+    }
+  </script>
+
+</body>
+</html>
