@@ -1,13 +1,12 @@
-const mongoose = require('mongoose');
+onst mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-
-    console.log("MongoDB Connected...");
-  } 
-  catch (err) {
-    console.error(err.message);
+    const connString = 'mongodb+srv://kanchana:kanchana123@cluster0.v9xjl.mongodb.net/crm?retryWrites=true&w=majority';
+    await mongoose.connect(connString);
+    console.log('MongoDB Connected Successfully');
+  } catch (error) {
+    console.error('Database connection failed:', error.message);
     process.exit(1);
   }
 };
