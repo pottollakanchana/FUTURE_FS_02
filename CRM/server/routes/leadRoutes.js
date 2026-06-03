@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Lead = require('../models/Lead');
+const Lead = require('../models/lead');
 
 // 1. READ: Get all leads
 router.get('/', async (req, res) => {
