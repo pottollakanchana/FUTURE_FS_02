@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/leads';
+const API_URL = 'https://future-fs-02-iota-nine.vercel.app/api/leads';
 
 function App() {
   const [leads, setLeads] = useState([]);
